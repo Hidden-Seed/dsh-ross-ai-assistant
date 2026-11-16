@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "AMD Ross AI Assistant",
+    "description": "Unofficial DSH fork of Xilinx/ross-ai-assistant. The AMD Ross skills for Vivado, Vitis HLS, Vitis AI, Versal segmented configuration, and embedded software are unchanged; this fork adds the DeepSeek Harness bundle, Settings page, and install documentation. Configure the Vivado and documentation MCP servers in Settings → AMD Ross."
+  }
+}

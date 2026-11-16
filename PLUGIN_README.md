@@ -7,6 +7,8 @@ SPDX-License-Identifier: MIT
 
 Agent skills for AMD FPGA/SoC development.
 
+> **DSH fork.** DeepSeek Harness installs this fork as the `dsh-ross-ai-assistant` bundle (wrapper `0.1.0`; upstream skills snapshot `2026.10.1`). It is not an AMD release.
+
 **New here?** Start with the [Getting Started](https://github.com/Xilinx/ross-ai-assistant/tree/main/docs/getting-started) guide. See the [docs](https://github.com/Xilinx/ross-ai-assistant/tree/main/docs) for the FAQ, MCP reference, and support.
 
 ## Requirements

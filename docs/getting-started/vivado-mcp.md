@@ -250,3 +250,50 @@ codex
 ```
 
 ---
+
+## DeepSeek Harness
+
+The AMD Ross plugin's **Settings → AMD Ross** page writes `vivado-mcp` and `amd-doc-search` entries inside the profile's MCP manager. The patch rows below are an alternative file-level configuration for a profile that does not mount the MCP manager. Use one method or the other: configuring both creates two clients with the same server names and tool namespaces.
+
+DeepSeek Harness connects MCP servers through a user patch layer. Install the standalone server binary as for the other CLI clients, then add one entry to the profile's patch file.
+
+1. Add the entry to `~/.dsh/profiles/<profile>/cordis.patch.yml` for one profile (on a Linux CLI installation the profile is `web`), or `~/.dsh/cordis.patch.yml` for every profile on the machine. The file is a YAML array; add the entry without replacing unrelated patches.
+
+    ```yaml
+    - insert:
+        - id: vivado-mcp
+          name: '@deepseek-ai/dsh-mcp-client'
+          config:
+            serverName: vivado-mcp
+            transport: stdio
+            command: /path/to/vivado-mcp-server
+            args: ['--stdio-bridge']
+            env:
+              VIVADO_PATH: /path/to/Vivado/<version>/bin/vivado
+    ```
+
+2. Restart DeepSeek Harness. The server's tools appear as `mcp__vivado-mcp__<tool>`, for example `mcp__vivado-mcp__vivado_execute`.
+
+Harness passes `config.env` values to the server explicitly, so set `VIVADO_PATH` there when Vivado is not already on the environment's `PATH`.
+
+### amd-doc-search
+
+Add a second entry with a unique `id` and a `streamable-http` transport:
+
+```yaml
+- insert:
+    - id: amd-doc-search
+      name: '@deepseek-ai/dsh-mcp-client'
+      config:
+        serverName: amd-doc-search
+        transport: streamable-http
+        url: https://vivado.amd.com/mcp/doc-search
+```
+
+The hosted endpoint is `https://vivado.amd.com/mcp/doc-search` and needs no API key; confirm it on the [setup page](https://ross.amd.com/chat#setup). If that page supplies a request header, add it under `config.headers`; the MCP client sends configured static headers and does not provide an interactive sign-in flow.
+
+The documentation tool then appears as `mcp__amd-doc-search__vivado_doc_search`. Leave this entry out to keep documentation queries off the network, or point `url` at the [local knowledge base](../local-kb/README.md) endpoint instead.
+
+### Verify
+
+Ask the agent: *"List the available MCP tools"*. The Vivado tools appear once the stdio server connects; the documentation tool appears only when the `amd-doc-search` entry is present and the connection succeeds.

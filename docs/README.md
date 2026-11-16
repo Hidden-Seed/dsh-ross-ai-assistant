@@ -9,7 +9,7 @@ Start with setup, then the workflow guides for the tools you use. FAQ and Suppor
 
 | Guide | Description |
 |-------|-------------|
-| [Getting Started](getting-started/) | Setup for VS Code, Cursor, Claude Code, Copilot, Codex, and the Vivado MCP server |
+| [Getting Started](getting-started/) | Setup for VS Code, Cursor, Claude Code, Copilot, Codex, DeepSeek Harness, and the Vivado MCP server |
 | [HLS Quick Start](getting-started/hls-quickstart.md) | Get started with Vitis HLS skills (no MCP server needed) |
 | [Vitis AI workflows](vitis-ai/index.md) | AI-assisted quantization, compiler options, and custom-operator skills for AMD NPU |
 | [Vivado MCP Tools](reference/vivado-mcp-tools.md) | Reference for all Vivado MCP Server tools |

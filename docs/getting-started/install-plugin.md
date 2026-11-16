@@ -98,6 +98,23 @@ codex plugin add amd-ross-agentic-ai-assistant@amd-ross-agentic-ai-assistant
 
 Codex copies the plugin into `~/.codex/plugins/cache/`. Browse what is installed with `/plugins`.
 
+### DeepSeek Harness
+
+DeepSeek Harness installs this fork as the `dsh-ross-ai-assistant` bundle (wrapper `0.1.0`; upstream skills snapshot `2026.10.1`). For a manual install, clone `https://github.com/Hidden-Seed/dsh-ross-ai-assistant`; the DSH catalog installs the release tarball without a clone.
+
+On Linux, the `dsh` CLI serves the browser UI from the `web` profile (`dsh web`); the `desktop` profile belongs to the macOS and Windows Desktop app, and the CLI rejects it. Installing a local bundle from a CLI installation uses `pnpm` from the Host `PATH`; the Desktop app supplies its own package manager.
+
+1. Open **Plugins** and choose **Add plugin**.
+2. Enter the clone's absolute path, `/path/to/dsh-ross-ai-assistant`, as the package name or address. Use the local directory, not the Git URL: DSH links a local directory, while a Git install copies the package away from the clone.
+3. Confirm the row **AMD Ross AI Assistant** and its description. The bundle is enabled as it installs.
+4. Start a new session; its skill catalog and `/` menu include the AMD skills.
+
+After installing, open **Settings → AMD Ross**. The page sets the Vivado MCP server binary, the Vivado executable path, and the documentation search URL, and saves them as the `vivado-mcp` and `amd-doc-search` entries in the profile's MCP manager. The servers remain separate processes. If the profile does not mount the MCP manager, use the alternative patch rows in [Vivado MCP Server for DeepSeek Harness](vivado-mcp.md#deepseek-harness) instead; do not configure both.
+
+The repository's `package.json` is the bundle manifest. It points at `.dsh-plugin/`, whose patch adds one Host plugin that registers the repository's `skills/` directory with the Harness skill catalog, so skill bodies resolve their `scripts/` and `reference/` files from the clone. The bundle contributes one summary per skill to every session catalog in the profile; full instructions load only when a skill is invoked. Uninstall the bundle from its **Plugins** page to remove every AMD skill from the profile.
+
+The skills follow the shared Skill format. Where a skill body says `$ARGUMENTS`, it means the arguments the user supplied with the invocation; DSH passes the user message as written and performs no substitution. Where a skill names a Claude Code `Agent` tool or `subagent_type`, use the Harness `subagent` tool instead and include the instructions from `agents/<name>.md` in its prompt; where it names `AskUserQuestion`, use `ask_user_question`.
+
 ### Kiro
 
 Kiro calls Agent Plugins **powers** and reads the same manifest.
@@ -153,6 +170,7 @@ Re-run the prompt whenever you want the latest release. To pin a specific releas
 | VS Code | **Chat: Configure Skills**, and the plugin under **Agent Plugins - Installed** |
 | Claude Code | `claude plugin list`, or `/plugin` |
 | Codex | `/plugins` |
+| DeepSeek Harness | the skill catalog in a new session, and `/hls-optimize` |
 | Kiro | the **Powers** panel |
 | Devin CLI | `devin plugins list` |
 | Antigravity | **Customizations** → plugins and skills |
@@ -178,6 +196,7 @@ Then, per client:
 - **Cursor**: pull the clone under `~/.cursor/plugins/local/`, then restart Cursor.
 - **VS Code**: reads the clone in place; reload the window.
 - **Claude Code** and **Codex**: both copied the plugin into their own cache, so pulling the clone alone changes nothing. Remove the plugin and install it again.
+- **DeepSeek Harness**: links the clone, so a `git pull` updates the skill files after the catalog watcher notices them; start a new session for new or removed slash entries. Restart the Harness after a release that changes `.dsh-plugin/index.js`.
 - **Kiro**: re-import the folder.
 - **Devin CLI**: start a new session.
 - **Antigravity**: re-run the install prompt.
@@ -202,3 +221,7 @@ This matters beyond the clutter. In Claude Code the copy that is not the plugin 
 ### Skills missing
 
 A skill is skipped without warning if its directory name does not match the `name` in its `SKILL.md` frontmatter. Discovery is also non-recursive: only immediate children of `skills/` count.
+
+### DeepSeek Harness: the plugin has no skills
+
+Check the **Plugins** row first: an installed bundle can be disabled without being removed. Then check that `.dsh-plugin/index.js` and `.dsh-plugin/cordis.patch.yml` exist in the clone and that the installed Harness reports version `0.2.2-rc.3` or later, the minimum in the bundle's `engines.dsh`. If the row is active but the catalog has no AMD skills, look for `skill provider "amd-ross" skipped` in the Harness log; the message names the failing module or path. After changing plugin code, restart the Harness; skill file edits alone need no restart.

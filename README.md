@@ -18,9 +18,12 @@ SPDX-License-Identifier: MIT
 [![Cursor](https://img.shields.io/badge/Cursor-Compatible-000000)](https://cursor.com)
 [![Claude Code](https://img.shields.io/badge/Claude_Code-Compatible-F07535)](https://www.anthropic.com/claude-code)
 [![OpenAI Codex](https://img.shields.io/badge/OpenAI_Codex-Compatible-412991)](https://openai.com/codex/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
+[![DeepSeek Harness](https://img.shields.io/badge/DeepSeek_Harness-Compatible-4B32C3)](docs/getting-started/install-plugin.md#deepseek-harness)
+[![License: MIT AND Apache-2.0](https://img.shields.io/badge/License-MIT_AND_Apache--2.0-blue)](THIRD_PARTY_NOTICES.md)
 
 Agent skills for AMD FPGA/SoC development.
+
+> **DSH fork.** This repository adds DeepSeek Harness support to [Xilinx/ross-ai-assistant](https://github.com/Xilinx/ross-ai-assistant). The DSH wrapper is `0.1.0`; the bundled skills are the upstream `2026.10.1` snapshot. It is not an AMD release.
 
 **New here?** Start with the [Getting Started](docs/getting-started/) guide. See [docs](docs/) for FAQ, MCP reference, and support.
 
@@ -53,7 +56,9 @@ For detailed installation instructions, see [https://ross.amd.com/chat#setup](ht
 
 This repository is also an agent plugin: your local clone can be installed as a plugin, which adds every skill in one step. Updating is then a `git pull` of the clone.
 
-Once installed, invoke the skills by name, for example `/hls-optimize`, and they call each other by those same names. Some clients list them under the plugin's name, `amd-ross-agentic-ai-assistant`.
+DeepSeek Harness installs this fork as the `dsh-ross-ai-assistant` bundle from its **Plugins** page. The repository's `package.json` is the bundle manifest, and `.dsh-plugin/` registers the `skills/` directory with the Harness skill catalog. Open **Settings → AMD Ross** to configure the Vivado and documentation MCP servers.
+
+Once installed, invoke the skills by name, for example `/hls-optimize`, and they call each other by those same names. Some clients list them under the plugin's name, `amd-ross-agentic-ai-assistant`; DeepSeek Harness registers this fork as `dsh-ross-ai-assistant`.
 
 > **Choose one install method.** If you install the plugin, do not also install the skills with `npx skills add` or by copying them. Every skill would then be loaded twice.
 

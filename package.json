@@ -1,0 +1,65 @@
+{
+  "name": "dsh-ross-ai-assistant",
+  "version": "0.1.0",
+  "description": "Unofficial DeepSeek Harness fork of the AMD Ross AI Assistant: upstream skills snapshot 2026.10.1 plus the DSH bundle and MCP settings page.",
+  "license": "MIT AND Apache-2.0 WITH LLVM-exception",
+  "author": {
+    "name": "Hidden-Seed",
+    "url": "https://github.com/Hidden-Seed"
+  },
+  "homepage": "https://github.com/Hidden-Seed/dsh-ross-ai-assistant",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hidden-Seed/dsh-ross-ai-assistant.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Hidden-Seed/dsh-ross-ai-assistant/issues"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./.dsh-plugin/index.js",
+    "./client": "./.dsh-plugin/client.js",
+    "./locale/*.json": "./.dsh-plugin/locale/*.json",
+    "./package.json": "./package.json"
+  },
+  "icon": ".dsh-plugin/icon.svg",
+  "dsh": {
+    "bundle": {
+      "patch": "./.dsh-plugin/cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-settings"
+      ]
+    }
+  },
+  "engines": {
+    "dsh": ">=0.2.2-rc.3"
+  },
+  "keywords": [
+    "amd",
+    "xilinx",
+    "fpga",
+    "vivado",
+    "vitis",
+    "hls",
+    "agent-skills",
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin"
+  ],
+  "files": [
+    ".dsh-plugin",
+    "agents",
+    "assets/logo.svg",
+    "docs/images",
+    "LICENSES",
+    "THIRD_PARTY_NOTICES.md",
+    "skills",
+    "README.md",
+    "PLUGIN_README.md",
+    "LICENSE"
+  ]
+}

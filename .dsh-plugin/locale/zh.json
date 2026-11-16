@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "AMD Ross AI 助手",
+    "description": "Xilinx/ross-ai-assistant 的非官方 DSH fork。Vivado、Vitis HLS、Vitis AI、Versal 分段配置和嵌入式软件相关技能保持不变；本 fork 仅增加 DeepSeek Harness bundle、设置页面和安装文档。在设置 → AMD Ross 中配置 Vivado MCP 服务器和文档检索服务器。"
+  }
+}

@@ -29,7 +29,7 @@ No additional license is required. You only need the applicable licenses for the
 
 **Which coding agents and models can I use with AMD skills?**
 
-Use a current coding agent (Cursor, Claude Code, Copilot, or similar) that can load Agent Skills and call tools (including AMD MCP when the skill needs a live Vivado session). Use a current, large-context coding model your company already allows — not a small or chat-only model.
+Use a current coding agent (Cursor, Claude Code, Copilot, DeepSeek Harness, or similar) that can load Agent Skills and call tools (including AMD MCP when the skill needs a live Vivado session). Use a current, large-context coding model your company already allows — not a small or chat-only model.
 
 Current GPT-5 Sol–class and Claude Opus 5–class coding models provide the capabilities these skills require.
 
@@ -37,7 +37,11 @@ Current GPT-5 Sol–class and Claude Opus 5–class coding models provide the ca
 
 **Can I use the MCP server without the VS Code extension?**
 
-Yes. The MCP server works with any MCP-compatible client: Cursor, Claude Code, GitHub Copilot CLI, Codex CLI, and others. The VS Code extension adds convenience features but isn't required.
+Yes. The MCP server works with any MCP-compatible client: Cursor, Claude Code, GitHub Copilot CLI, Codex CLI, DeepSeek Harness, and others. The VS Code extension adds convenience features but isn't required.
+
+**Does DeepSeek Harness support the plugin?**
+
+Yes. In DeepSeek Harness, open **Plugins**, choose **Add plugin**, and enter the clone's absolute path as the package name or address. This fork installs as the `dsh-ross-ai-assistant` bundle; its `package.json` and `.dsh-plugin/` register every skill in `skills/` with the Harness skill catalog. After installing, open **Settings → AMD Ross** to set the Vivado MCP server binary, the Vivado executable path, and the documentation search URL. The Vivado MCP server and `amd-doc-search` remain separate processes. Use either that page or the alternative patch rows in [Vivado MCP Server for DeepSeek Harness](getting-started/vivado-mcp.md#deepseek-harness), not both.
 
 **Do I need to start Vivado myself first?**
 
