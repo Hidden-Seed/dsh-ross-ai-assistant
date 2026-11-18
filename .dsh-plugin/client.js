@@ -2,7 +2,7 @@
 // SPDX-License-Identifier: MIT
 
 window.__ModuleLoader__.load({
-  id: 'dsh-ross-ai-assistant',
+  id: '@hidden-seed/dsh-ross-ai-assistant',
   factory(require) {
     const React = require('react')
     const h = React.createElement

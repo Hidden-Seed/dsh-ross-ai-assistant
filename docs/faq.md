@@ -41,7 +41,7 @@ Yes. The MCP server works with any MCP-compatible client: Cursor, Claude Code, G
 
 **Does DeepSeek Harness support the plugin?**
 
-Yes. In DeepSeek Harness, open **Plugins**, choose **Add plugin**, and enter the clone's absolute path as the package name or address. This fork installs as the `dsh-ross-ai-assistant` bundle; its `package.json` and `.dsh-plugin/` register every skill in `skills/` with the Harness skill catalog. After installing, open **Settings → AMD Ross** to set the Vivado MCP server binary, the Vivado executable path, and the documentation search URL. The Vivado MCP server and `amd-doc-search` remain separate processes. Use either that page or the alternative patch rows in [Vivado MCP Server for DeepSeek Harness](getting-started/vivado-mcp.md#deepseek-harness), not both.
+Yes. In DeepSeek Harness, open **Plugins**, choose **Add plugin**, and enter the clone's absolute path as the package name or address. This fork installs as the `@hidden-seed/dsh-ross-ai-assistant` bundle; its `package.json` and `.dsh-plugin/` register every skill in `skills/` with the Harness skill catalog. After installing, open **Settings → AMD Ross** to set the Vivado MCP server binary, the Vivado executable path, and the documentation search URL. The Vivado MCP server and `amd-doc-search` remain separate processes. Use either that page or the alternative patch rows in [Vivado MCP Server for DeepSeek Harness](getting-started/vivado-mcp.md#deepseek-harness), not both.
 
 **Do I need to start Vivado myself first?**
 

@@ -4,4 +4,4 @@
 # Adds the skills under ../skills to the DeepSeek Harness skill catalog.
 - insert:
     - id: dsh-ross-skills
-      name: 'dsh-ross-ai-assistant'
+      name: '@hidden-seed/dsh-ross-ai-assistant'

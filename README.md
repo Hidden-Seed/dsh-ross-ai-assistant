@@ -56,9 +56,9 @@ For detailed installation instructions, see [https://ross.amd.com/chat#setup](ht
 
 This repository is also an agent plugin: your local clone can be installed as a plugin, which adds every skill in one step. Updating is then a `git pull` of the clone.
 
-DeepSeek Harness installs this fork as the `dsh-ross-ai-assistant` bundle from its **Plugins** page. The repository's `package.json` is the bundle manifest, and `.dsh-plugin/` registers the `skills/` directory with the Harness skill catalog. Open **Settings → AMD Ross** to configure the Vivado and documentation MCP servers.
+DeepSeek Harness installs this fork as the `@hidden-seed/dsh-ross-ai-assistant` bundle from its **Plugins** page. The repository's `package.json` is the bundle manifest, and `.dsh-plugin/` registers the `skills/` directory with the Harness skill catalog. Open **Settings → AMD Ross** to configure the Vivado and documentation MCP servers.
 
-Once installed, invoke the skills by name, for example `/hls-optimize`, and they call each other by those same names. Some clients list them under the plugin's name, `amd-ross-agentic-ai-assistant`; DeepSeek Harness registers this fork as `dsh-ross-ai-assistant`.
+Once installed, invoke the skills by name, for example `/hls-optimize`, and they call each other by those same names. Some clients list them under the plugin's name, `amd-ross-agentic-ai-assistant`; DeepSeek Harness registers this fork as `@hidden-seed/dsh-ross-ai-assistant`.
 
 > **Choose one install method.** If you install the plugin, do not also install the skills with `npx skills add` or by copying them. Every skill would then be loaded twice.
 

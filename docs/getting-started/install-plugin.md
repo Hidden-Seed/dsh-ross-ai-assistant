@@ -100,7 +100,7 @@ Codex copies the plugin into `~/.codex/plugins/cache/`. Browse what is installed
 
 ### DeepSeek Harness
 
-DeepSeek Harness installs this fork as the `dsh-ross-ai-assistant` bundle (wrapper `0.1.0`; upstream skills snapshot `2026.10.1`). For a manual install, clone `https://github.com/Hidden-Seed/dsh-ross-ai-assistant`; the DSH catalog installs the release tarball without a clone.
+DeepSeek Harness installs this fork as the `@hidden-seed/dsh-ross-ai-assistant` bundle (wrapper `0.1.0`; upstream skills snapshot `2026.10.1`). For a manual install, clone `https://github.com/Hidden-Seed/dsh-ross-ai-assistant`; the DSH catalog installs the release tarball without a clone. Once the npm package is published, `dsh plugin --profile web add @hidden-seed/dsh-ross-ai-assistant@0.1.0` installs it without a clone.
 
 On Linux, the `dsh` CLI serves the browser UI from the `web` profile (`dsh web`); the `desktop` profile belongs to the macOS and Windows Desktop app, and the CLI rejects it. Installing a local bundle from a CLI installation uses `pnpm` from the Host `PATH`; the Desktop app supplies its own package manager.
 
